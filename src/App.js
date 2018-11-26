@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import Layout from './containers/Layout/Layout'
+import Layout from './containers/Layout/Layout';
 
-import Album from './containers/Album/Album'
-import Login from './containers/Auth/Login/Login'
-import Logout from './containers/Auth/Logout/Logout'
-import Register from './containers/Auth/Register/Register'
-import Profile from './containers/Profile/Profile'
-import Tasks from './containers/Tasks/Tasks'
-import Wall from './containers/Wall/Wall'
+import Album from './containers/Album/Album';
+import Login from './containers/Auth/Login/Login';
+import Logout from './containers/Auth/Logout/Logout';
+import Register from './containers/Auth/Register/Register';
+import Profile from './containers/Profile/Profile';
+import Tasks from './containers/Tasks/Tasks';
+import Wall from './containers/Wall/Wall';
 
 class App extends Component {
   render() {
@@ -22,7 +22,7 @@ class App extends Component {
         <Route path="/" exact component={Register} />
         <Redirect to="/" />
       </Switch>
-    )
+    );
 
     if (this.props.isAuthenticated) {
       routes = (
@@ -34,21 +34,21 @@ class App extends Component {
           <Route path="/" exact component={Profile} />
           <Redirect to="/" />
         </Switch>
-      )
+      );
     }
 
     return (
       <div className="App">
         <Layout>{routes}</Layout>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.token !== null
-  }
-}
+    isAuthenticated: state.auth.token !== null,
+  };
+};
 
-export default withRouter(connect(mapStateToProps)(App))
+export default withRouter(connect(mapStateToProps)(App));
